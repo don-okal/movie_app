@@ -1,16 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
 import 'package:movie/core/utils/app_assets.dart';
 import 'package:movie/core/utils/app_text_style.dart';
 import 'package:movie/core/utils/size_utils.dart';
+import 'package:movie/features/home/presentation/getx/controllers/home_controller.dart';
 import 'package:movie/features/home/presentation/views/widgets/book_mark.dart';
 
 import '../../../../../core/utils/app_colors.dart';
 
-class MovieItem extends StatelessWidget {
-  const MovieItem({
+class MovieItem extends GetView<HomeController> {
+  const MovieItem(
+    this.index, {
     super.key,
   });
+  final int index;
 
   @override
   Widget build(BuildContext context) {
@@ -28,24 +32,23 @@ class MovieItem extends StatelessWidget {
         color: AppColors.darkGrey,
       ),
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
-        spacing: getVerticalSize(4),
+        // spacing: getVerticalSize(4),
         children: [
           Container(
-            height: getVerticalSize(128),
+            height: getVerticalSize(124),
             width: getHorizontalSize(97),
             decoration: BoxDecoration(
               borderRadius: BorderRadiusDirectional.only(
                 topStart: Radius.circular(12),
                 topEnd: Radius.circular(12),
               ),
-              color: Colors.white,
-              image: DecorationImage(
-                image: AssetImage(AppAssets.testBackGround),
-                fit: BoxFit.cover,
-              ),
             ),
-            child: BookMark(),
+            child: BookMark(index),
+          ),
+          SizedBox(
+            height: getVerticalSize(4),
           ),
           Row(
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -58,18 +61,31 @@ class MovieItem extends StatelessWidget {
               ),
               Text(
                 textAlign: TextAlign.center,
-                '7.7',
+                '${controller.topRatedModel.results?[index].voteAverage?.toStringAsFixed(1)}',
                 style: AppTextStyle.white10500,
               ),
             ],
           ),
-          Text(
-            'The Godfather',
-            style: AppTextStyle.white10500,
+          SizedBox(
+            height: getVerticalSize(4),
           ),
+          SizedBox(
+            width: getHorizontalSize(90),
+            child: Text(
+              overflow: TextOverflow.ellipsis,
+              maxLines: 2,
+              textAlign: TextAlign.center,
+              '${controller.topRatedModel.results?[index].title}',
+              style: AppTextStyle.white10500,
+            ),
+          ),
+          Spacer(),
           Text(
-            '2018  R  1h 59m',
+            '${controller.topRatedModel.results?[index].releaseDate?.year}',
             style: AppTextStyle.grey8500,
+          ),
+          SizedBox(
+            height: getVerticalSize(4),
           ),
         ],
       ),

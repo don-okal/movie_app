@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:movie/core/utils/app_colors.dart';
 import 'package:movie/core/utils/app_text_style.dart';
 import 'package:movie/core/utils/size_utils.dart';
+import 'package:movie/features/home/presentation/getx/controllers/home_controller.dart';
 import 'package:movie/features/home/presentation/views/widgets/movie_item.dart';
 
-class MoviesSection extends StatelessWidget {
+class MoviesSection extends GetView<HomeController> {
   const MoviesSection({
     super.key,
     required this.title,
@@ -50,9 +52,9 @@ class MoviesSection extends StatelessWidget {
                     vertical: getVerticalSize(4),
                   ),
                   scrollDirection: Axis.horizontal,
-                  itemCount: 25,
+                  itemCount: controller.topRatedModel.results?.length ?? 0,
                   separatorBuilder: (BuildContext context, int index) =>
-                      MovieItem(),
+                      MovieItem(index),
                   itemBuilder: (BuildContext context, int index) {
                     return SizedBox(
                       width: getHorizontalSize(12),

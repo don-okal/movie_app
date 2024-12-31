@@ -5,12 +5,13 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:movie/core/utils/app_assets.dart';
 import 'package:movie/core/utils/app_colors.dart';
+import 'package:movie/core/utils/constants.dart';
 import 'package:movie/core/utils/size_utils.dart';
 import 'package:movie/features/home/presentation/getx/controllers/home_controller.dart';
 
 class BookMark extends GetView<HomeController> {
-  const BookMark({super.key});
-
+  const BookMark(this.index, {super.key});
+  final int index;
   @override
   Widget build(BuildContext context) {
     return Obx(
@@ -21,7 +22,9 @@ class BookMark extends GetView<HomeController> {
           color:
               controller.isBookMarked.value ? AppColors.primary : Colors.white,
           image: DecorationImage(
-            image: AssetImage(AppAssets.testBackGround),
+            image: NetworkImage(
+              '${Constants.imageURL}${controller.topRatedModel.results?[index].posterPath}',
+            ),
             fit: BoxFit.cover,
           ),
         ),

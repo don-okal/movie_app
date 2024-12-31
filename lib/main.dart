@@ -2,10 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:movie/core/routes/app_pages.dart';
 import 'package:movie/core/utils/app_colors.dart';
+import 'package:movie/injection_controller.dart';
 
 import 'core/locale/locale.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await InjectionController().initialize();
   runApp(const MyApp());
 }
 

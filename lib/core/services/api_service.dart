@@ -7,7 +7,7 @@ class ApiService {
   ApiService() {
     // Configure Dio with base options
     BaseOptions options = BaseOptions(
-      // baseUrl: '${Constants.baseUrl}',
+      baseUrl: 'https://api.themoviedb.org/',
       connectTimeout: const Duration(minutes: 1),
       receiveTimeout: const Duration(minutes: 1),
       headers: {

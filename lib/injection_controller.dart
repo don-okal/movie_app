@@ -1,4 +1,5 @@
 import 'package:get_it/get_it.dart';
+
 import 'core/services/api_service.dart';
 import 'features/home/data/remote/remote_data_source.dart';
 import 'features/home/data/repo_impl/repo_impl.dart';
@@ -18,7 +19,9 @@ class InjectionController {
     );
 
     getIt.registerLazySingleton<HomeRemoteDataSource>(
-      () => HomeRemoteDataSourceImpl(getIt()),
+      () => HomeRemoteDataSourceImpl(
+        getIt(),
+      ),
     );
 
     getIt.registerLazySingleton<HomeUseCase>(
