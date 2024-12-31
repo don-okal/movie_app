@@ -73,6 +73,16 @@ class HomePageView extends StatelessWidget {
               title: 'New Releases',
             ),
           ),
+          SliverToBoxAdapter(
+            child: MoviesSection(
+              title: 'New Releases',
+            ),
+          ),
+          SliverToBoxAdapter(
+            child: MoviesSection(
+              title: 'New Releases',
+            ),
+          ),
         ],
       ),
     );

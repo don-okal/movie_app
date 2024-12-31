@@ -10,6 +10,12 @@ class AppTextStyle {
     fontWeight: FontWeight.w600,
     color: AppColors.white,
   );
+  static final TextStyle white10500 = TextStyle(
+    fontFamily: GoogleFonts.roboto().fontFamily ?? 'DefaultFontFamily',
+    fontSize: getFontSize(10),
+    fontWeight: FontWeight.w500,
+    color: AppColors.white,
+  );
   static final TextStyle white15700 = TextStyle(
     fontFamily: GoogleFonts.roboto().fontFamily ?? 'DefaultFontFamily',
     fontSize: getFontSize(15),
@@ -21,6 +27,12 @@ class AppTextStyle {
     fontFamily: GoogleFonts.roboto().fontFamily ?? 'DefaultFontFamily',
     fontSize: getFontSize(10),
     fontWeight: FontWeight.w800,
+    color: AppColors.textGrey,
+  );
+  static final TextStyle grey8500 = TextStyle(
+    fontFamily: GoogleFonts.roboto().fontFamily ?? 'DefaultFontFamily',
+    fontSize: getFontSize(8),
+    fontWeight: FontWeight.w500,
     color: AppColors.textGrey,
   );
 }
